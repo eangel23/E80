@@ -74,11 +74,61 @@ void loop() {
   //       void motorDriver.drive(int motorA_power,int motorB_power,int motorC_power); 
   // the value of motorX_power can range from -255 to 255, and sets the PWM applied to the motor 
   // The following example will turn on motor B for four seconds between seconds 4 and 8 
-  if (currentTime > 4000 && currentTime <8000) {
+
+  // motor test
+  if (currentTime > 5000 && currentTime < 7500) { // A  up for 2.5
+    motorDriver.drive(120,0,0);
+    printer.printMessage("Motor A forward");
+
+  } if (currentTime > 7500 && currentTime < 10000) { // A down for 2.5
+    motorDriver.drive(-120,0,0);
+    printer.printMessage("Motor A backward");
+
+  } if (currentTime > 10000 && currentTime < 12500) { // B  forward for 2.5
     motorDriver.drive(0,120,0);
+    printer.printMessage("Motor B forward");
+
+  } if (currentTime > 12500 && currentTime < 15000) { // B  backwards for 2.5
+    motorDriver.drive(0,-120,0);
+    printer.printMessage("Motor B backward");
+
+  } if (currentTime > 15000 && currentTime < 17500) { // C  forward for 2.5
+    motorDriver.drive(0,0,120);
+    printer.printMessage("Motor C forward");
+
+  } if (currentTime > 17500 && currentTime < 20000) { // C  backwards for 2.5
+    motorDriver.drive(0,0,-120);
+    printer.printMessage("Motor C backward");
+
+  } if (currentTime > 22500 && currentTime < 27500) { // A B C for 5 after 2.5 pause
+    motorDriver.drive(120,120,120);
+    printer.printMessage("All forward");
+    
   } else {
     motorDriver.drive(0,0,0);
+    printer.printMessage("Motor Off");
   }
+
+  // Obstacle course 
+
+  // 3 minute buffer 
+  // if (currentTime < 30000 {
+  //   motorDriver.drive(0,0,0);
+  // } 
+  // // down for 2 seconds from yellow hoop
+  // if (currentTime > 30000 && currentTime < 50000) { 
+  //   motorDriver.drive(-120,0,0);
+  // }
+  // // forward for 5 seconds through middle hoop
+  // if (currentTime > 50000 && currentTime < 100000) { 
+  //   motorDriver.drive(0,-120,-120);
+  // }
+  // // up for 2 to surface in red hoop
+  // if (currentTime > 100000 && currentTime < 120000) { 
+  //   motorDriver.drive(120,0,0);
+  // }
+
+
 
   // DONT CHANGE CODE BELOW THIS LINE 
   // --------------------------------------------------------------------------
